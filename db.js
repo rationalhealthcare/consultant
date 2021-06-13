@@ -1,8 +1,14 @@
+/**
+ * 
+ * (c) 
+ * 
+ * 
+ */
 var mongoose = require("mongoose");
+mongoose.set('useFindAndModify', false);
 var statsd = require("./statsd");
 
-const Values = require("./src/models/consultantModel.js");
-const consCtlr = require("./src/controllers/controller.js");
+const Values = require("./src/models/model.js");
 
 module.exports = {
   connectDB: function () {
