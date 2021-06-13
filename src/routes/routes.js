@@ -1,7 +1,18 @@
 var express = require('express');
-var mongodb = require('../db');
+var mongodb = require('../../db');
 
 var router = express.Router();
+
+
+/**
+ * API 
+ */
+router.get("/api/", (req, res)=>{
+  res.send(200, "Consultant API, at your service!")
+})
+
+
+
 
 /* GET home page. */
 router.get('/', function(req, res) {
