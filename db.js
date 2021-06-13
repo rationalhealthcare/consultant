@@ -6,9 +6,6 @@
  */
 var mongoose = require("mongoose");
 mongoose.set('useFindAndModify', false);
-var statsd = require("./statsd");
-
-const Values = require("./src/models/model.js");
 
 module.exports = {
   connectDB: function () {
@@ -17,8 +14,13 @@ module.exports = {
       useUnifiedTopology: true,
     });
   },
+}; 
 
-  updateGauge: function () {
+
+
+
+
+/*   updateGauge: function () {
     Values.count(function (err, result) {
       if (!err) {
         statsd.gauge("values", result);
@@ -76,4 +78,5 @@ module.exports = {
       statsd.increment("deletions");
     });
   },
-};
+  */
+

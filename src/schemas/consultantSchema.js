@@ -1,47 +1,42 @@
 const mongoose = require("mongoose");
 
 /**
- * TEST
+ * NOTE that the addressSchema is not required, but if it's present, all the 
+ * required fields must be present else validation fails 
  */
-const consultantSchema = mongoose.Schema({
-  name: { type: String },
-  fid: { type: String },
-});
-
-/**
- *
- */
-const xconsultantSchema = mongoose.Schema({
-  fid: mongoose.ObjectId,
-  fname: { type: String, required: true },
-  lname: { type: String, required: true },
-  npi: { type: String, required: true },
-  phone: { type: String, required: true },
-  address: {
-    address1: { type: String, required: true },
-    address2: { type: String, required: false },
-    city: { type: String, required: true },
-    state: {
-      type: String,
-      enum: [
-        /* list of state codes goes here */
-        "IL",
-        "CA",
-      ],
-      required: true,
-    },
-    postalcode: { type: String, required: true },
-    country: {
-      type: String,
-      enum: [
-        /* list of country codes goes here */
-        "USA",
-        "UK",
-      ],
-      required: true,
-      default: "USA",
-    },
+const addressSchema = mongoose.Schema({
+  address1: { type: String, required: true },
+  address2: { type: String, required: false },
+  city: { type: String, required: true },
+  state: {
+    type: String,
+    enum: [
+        "AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL",
+        "GA","HI","ID","IL","IN","IA","KS","KY","LA","ME",
+        "MD","MA","MI","MN","MS","MO","MT","NE","NV","NH",
+        "NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI",
+        "SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"
+    ],
+    required: true
+  },
+  postalcode: { type: String, required: true },
+  country: {
+    type: String,
+    enum: ["USA", "UK"],
+    required: true,
+    default: "USA",
   },
 });
 
+const consultantSchema = mongoose.Schema({
+  fid: { type: String, required: true },
+  fname: { type: String, required: true },
+  lname: { type: String, required: true },
+  npi: { type: String, required: false },
+  phone: { type: String, required: false },
+  address: { type: addressSchema, required: false },
+});
+
+
 module.exports = consultantSchema;
+

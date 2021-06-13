@@ -73,10 +73,10 @@ const consultantController = {
   },
 
   /**
-   * PUTs
+   * PATCHes
    */
 
-  updateConsultant: (req, res) => {
+  patchConsultant: (req, res) => {
     Consultant.findOneAndUpdate({ _id: req.params.id }, req.body, {new: true}, (err, result) => {
       if (err) {
         console.log(err);
@@ -88,6 +88,24 @@ const consultantController = {
       res.status(201).send(JSON.stringify(result));
     });
   },
-};
+
+  putConsultant: (req, res) => {
+    Consultant.findOneAndReplace({ _id: req.params.id }, req.body, {new: true}, (err, result) => {
+        if (err) {
+          console.log(err);
+          res.send(
+            JSON.stringify({ status: "error", value: "Error, db request failed" })
+          );
+          return;
+        }
+        res.status(201).send(JSON.stringify(result));
+      });
+
+
+  }
+
+
+
+}; //end module
 
 module.exports = consultantController;
