@@ -30,9 +30,10 @@ const addressSchema = mongoose.Schema({
 
 const consultantSchema = mongoose.Schema({
   fid: { type: String, required: true },
-  fname: { type: String, required: true },
-  lname: { type: String, required: true },
+  name: { type: String, required: true },
   npi: { type: String, required: false },
+  type: String,
+  enum: ["Practitioner", "Facility"],
   phone: { type: String, required: false },
   address: { type: addressSchema, required: false },
 });

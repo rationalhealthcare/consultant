@@ -1,0 +1,6 @@
+
+
+
+export MONGODB_ADDON_URI="mongodb+srv://mongodbuser:hPamPB5hzqva7pCr@cluster0.0af8f.mongodb.net/consdb?retryWrites=true&w=majority"
+
+
